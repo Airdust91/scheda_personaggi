@@ -374,10 +374,6 @@
                 <span class="nav-icon"><i class="fas fa-home"></i></span>
                 <span class="nav-text">Home</span>
             </a>
-            <a href="#" class="nav-item" data-tab="id">
-                <span class="nav-icon"><i class="fas fa-id-card"></i></span>
-                <span class="nav-text">ID</span>
-            </a>
             <a href="#" class="nav-item" data-tab="profilo">
                 <span class="nav-icon"><i class="fas fa-user"></i></span>
                 <span class="nav-text">Profilo</span>
@@ -419,8 +415,8 @@
                         <div class="separator"></div>
                         
                         <div style="margin-top: 20px;">
-                            <div style="color: #64c4ff; font-size: 18px; margin-bottom: 5px;">$RUOLO$ / $FAZIONE$</div>
-                            <div style="font-family: 'Courier New', monospace; color: #64c4ff; margin-top: 15px; letter-spacing: 2px;">ID: $ID$</div>
+                            <div style="color: #64c4ff; font-size: 18px; margin-bottom: 5px;">$RUOLO$ / $CORPORAZIONE$</div>
+                            <div style="font-family: 'Courier New', monospace; color: #64c4ff; margin-top: 15px; letter-spacing: 2px;">$CLASSE$</div>
                         </div>
                     </div>
                     
@@ -431,10 +427,10 @@
             </div>
             
             <!-- CONTENUTO DELLE TAB -->
-            <!-- ID -->
-            <div id="id" class="tab-content">
+            <!-- PROFILO -->
+            <div id="profilo" class="tab-content">
                 <div class="close-btn"><i class="fas fa-times"></i></div>
-                <h2 class="section-title"><i class="fas fa-id-card"></i> Identificazione</h2>
+                <h2 class="section-title"><i class="fas fa-user"></i> Profilo</h2>
                 
                 <div class="content-grid">
                     <div>
@@ -444,36 +440,19 @@
                         <strong style="color: #64c4ff;">Cognome:</strong> $COGNOME$
                     </div>
                     <div>
-                        <strong style="color: #64c4ff;">ID:</strong> $ID$
-                    </div>
-                    <div>
-                        <strong style="color: #64c4ff;">Fazione:</strong> $FAZIONE$
-                    </div>
-                    <div>
-                        <strong style="color: #64c4ff;">Ruolo:</strong> $RUOLO$
-                    </div>
-                    <div>
-                        <strong style="color: #64c4ff;">Status:</strong> $STATUS$
-                    </div>
-                </div>
-                
-                <div style="margin-top: 30px;">
-                    <strong style="color: #64c4ff;">Note di identificazione:</strong>
-                    <p>$NOTE_ID$</p>
-                </div>
-            </div>
-            
-            <!-- PROFILO -->
-            <div id="profilo" class="tab-content">
-                <div class="close-btn"><i class="fas fa-times"></i></div>
-                <h2 class="section-title"><i class="fas fa-user"></i> Profilo Personale</h2>
-                
-                <div class="content-grid">
-                    <div>
-                        <strong style="color: #64c4ff;">Età:</strong> $ETA$
-                    </div>
-                    <div>
                         <strong style="color: #64c4ff;">Genere:</strong> $GENERE$
+                    </div>
+                    <div>
+                        <strong style="color: #64c4ff;">Età Anagrafica:</strong> $ETA_ANAGRAFICA$
+                    </div>
+                    <div>
+                        <strong style="color: #64c4ff;">Età Biologica:</strong> $ETA_BIOLOGICA$
+                    </div>
+                    <div>
+                        <strong style="color: #64c4ff;">Razza:</strong> $RAZZA$
+                    </div>
+                    <div>
+                        <strong style="color: #64c4ff;">Classe:</strong> $CLASSE$
                     </div>
                     <div>
                         <strong style="color: #64c4ff;">Altezza:</strong> $ALTEZZA$
@@ -482,19 +461,24 @@
                         <strong style="color: #64c4ff;">Peso:</strong> $PESO$
                     </div>
                     <div>
-                        <strong style="color: #64c4ff;">Origine:</strong> $ORIGINE$
+                        <strong style="color: #64c4ff;">Occhi:</strong> $OCCHI$
                     </div>
                     <div>
-                        <strong style="color: #64c4ff;">Professione:</strong> $PROFESSIONE$
+                        <strong style="color: #64c4ff;">Capelli:</strong> $CAPELLI$
+                    </div>
+                    <div>
+                        <strong style="color: #64c4ff;">Corporazione:</strong> $CORPORAZIONE$
+                    </div>
+                    <div>
+                        <strong style="color: #64c4ff;">Ruolo:</strong> $RUOLO$
                     </div>
                 </div>
                 
-                <h3 style="color: #64c4ff; margin-top: 30px;">Descrizione Fisica</h3>
-                <p>$DESCRIZIONE_FISICA$</p>
-                
-                <h3 style="color: #64c4ff; margin-top: 30px;">Contatti e Relazioni</h3>
-                <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(100, 196, 255, 0.2); border-radius: 6px; padding: 20px;">
-                    <p>$RELAZIONI$</p>
+                <div style="margin-top: 30px;">
+                    <h3 style="color: #64c4ff;">Descrizione Fisica</h3>
+                    <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(100, 196, 255, 0.2); border-radius: 6px; padding: 20px;">
+                        <p>$DESCRIZIONE_FISICA$</p>
+                    </div>
                 </div>
             </div>
             
