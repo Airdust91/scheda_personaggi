@@ -303,20 +303,6 @@ body {
     font-weight: 700;
 }
 
-/* Stile per l'indicatore admin-only */
-.admin-note {
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    border-radius: 6px;
-    padding: 10px 15px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: rgba(255, 215, 0, 0.8);
-    font-size: 14px;
-}
-
 /* Tabs per categorie di tratti */
 .traits-tabs {
     display: flex;
@@ -393,45 +379,6 @@ body {
 .trait-description {
     font-size: 14px;
     line-height: 1.4;
-}
-
-/* Admin-only styles */
-.admin-only {
-    position: relative;
-    border: 1px solid rgba(255, 215, 0, 0.4) !important;
-    background: rgba(255, 215, 0, 0.05) !important;
-}
-
-.admin-only::after {
-    content: "Admin";
-    position: absolute;
-    top: -10px;
-    right: 10px;
-    background: rgba(255, 215, 0, 0.7);
-    color: #000;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.admin-value {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.admin-edit {
-    color: rgba(255, 215, 0, 0.7);
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
-
-.admin-edit:hover {
-    color: #fff;
-    transform: scale(1.1);
 }
 
         /* Stili per la sezione XP */
@@ -538,6 +485,118 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Griglia per inventario */
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.item-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(100, 196, 255, 0.2);
+    border-radius: 6px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.item-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.item-card.equipped {
+    border-left: 3px solid #64ff8d;
+}
+
+.item-header {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.item-image-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid rgba(100, 196, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.item-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item-name {
+    color: #64c4ff;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.item-quantity {
+    background: rgba(100, 196, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.item-type {
+    font-size: 12px;
+    color: rgba(224, 247, 255, 0.7);
+    margin-top: 2px;
+}
+
+.item-description {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #e0f7ff;
+    margin-bottom: 10px;
+    border-top: 1px solid rgba(100, 196, 255, 0.1);
+    padding-top: 10px;
+}
+
+.item-stats {
+    font-size: 12px;
+    color: rgba(224, 247, 255, 0.7);
+    border-top: 1px solid rgba(100, 196, 255, 0.1);
+    padding-top: 8px;
+    margin-top: 8px;
+}
+
+.item-action {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #64c4ff;
+    text-align: right;
+    font-style: italic;
+}
+
+/* Responsive per inventario */
+@media (max-width: 768px) {
+    .inventory-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 /* Responsive */
 @media (max-width: 1100px) {
@@ -713,12 +772,8 @@ body {
                     <div>
                         <strong style="color: #64c4ff;">Ruolo:</strong> $RUOLO$
                     </div>
-                    <div class="admin-only">
-                        <strong style="color: #64c4ff;">Soglia di Affaticamento:</strong> 
-                        <span class="admin-value">
-                            $SOGLIA_AFFATICAMENTO$
-                            <i class="fas fa-edit admin-edit" title="Modificabile solo dagli amministratori"></i>
-                        </span>
+                    <div>
+                        <strong style="color: #64c4ff;">Soglia di Affaticamento:</strong> $SOGLIA_AFFATICAMENTO$
                     </div>
                 </div>
                 
@@ -751,11 +806,6 @@ body {
             <div id="tratti" class="tab-content">
                 <div class="close-btn"><i class="fas fa-times"></i></div>
                 <h2 class="section-title"><i class="fas fa-star"></i> Tratti</h2>
-                
-                <!-- Indicatore di sezione admin-only -->
-                <div class="admin-note">
-                    <i class="fas fa-lock"></i> Questa sezione è modificabile solo dagli amministratori
-                </div>
                 
                 <!-- Tabs per categorie di tratti -->
                 <div class="traits-tabs">
@@ -803,26 +853,30 @@ body {
     </div>
 </div>
             
-            <!-- INVENTARIO -->
-            <div id="inventario" class="tab-content">
-                <div class="close-btn"><i class="fas fa-times"></i></div>
-                <h2 class="section-title"><i class="fas fa-box"></i> Inventario</h2>
-                
-                <h3 style="color: #64c4ff;">Armi</h3>
-                <div style="margin-bottom: 30px;">
-                    $ARMI$
-                </div>
-                
-                <h3 style="color: #64c4ff;">Equipaggiamento</h3>
-                <div style="margin-bottom: 30px;">
-                    $EQUIPAGGIAMENTO$
-                </div>
-                
-                <h3 style="color: #64c4ff;">Oggetti Speciali</h3>
-                <div>
-                    $OGGETTI_SPECIALI$
-                </div>
-            </div>
+           <!-- INVENTARIO -->
+<div id="inventario" class="tab-content">
+    <div class="close-btn"><i class="fas fa-times"></i></div>
+    <h2 class="section-title"><i class="fas fa-box"></i> Inventario</h2>
+    
+    <!-- Nota informativa -->
+    <div class="info-note" style="margin-bottom: 30px;">
+        <i class="fas fa-info-circle"></i>
+        <div>
+            Per equipaggiare o disequipaggiare oggetti, usa il comando <strong>!equip</strong> o <strong>!unequip</strong> nelle chat di gioco su Discord.
+        </div>
+    </div>
+    
+    <h3 style="color: #64c4ff;"><i class="fas fa-user"></i> Equipaggiato</h3>
+    <div class="inventory-grid" style="margin-bottom: 30px;">
+        $EQUIPAGGIATO$
+    </div>
+    
+    <h3 style="color: #64c4ff;"><i class="fas fa-backpack"></i> Zaino</h3>
+    <div class="inventory-grid" style="margin-bottom: 30px;">
+        $ZAINO$
+    </div>
+</div>
+
 
             <!-- ESPERIENZA -->
 <div id="esperienza" class="tab-content">
