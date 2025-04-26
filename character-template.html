@@ -302,6 +302,98 @@
             font-size: 28px;
             font-weight: 700;
         }
+
+        /* Stile per l'indicatore admin-only */
+    .admin-note {
+        background: rgba(255, 215, 0, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        border-radius: 6px;
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: rgba(255, 215, 0, 0.8);
+        font-size: 14px;
+    }
+    
+    /* Tabs per categorie di tratti */
+    .traits-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(100, 196, 255, 0.2);
+        padding-bottom: 10px;
+    }
+    
+    .trait-tab-btn {
+        background: rgba(13, 20, 35, 0.7);
+        border: 1px solid rgba(100, 196, 255, 0.3);
+        color: #64c4ff;
+        padding: 8px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 600;
+    }
+    
+    .trait-tab-btn:hover {
+        background: rgba(100, 196, 255, 0.1);
+    }
+    
+    .trait-tab-btn.active {
+        background: rgba(100, 196, 255, 0.2);
+        border-color: #64c4ff;
+        color: #fff;
+    }
+    
+    /* Contenitore dei tratti */
+    .trait-category {
+        display: none;
+    }
+    
+    .trait-category.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+    }
+    
+    /* Grid per i tratti */
+    .traits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    /* Card dei tratti */
+    .trait-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(100, 196, 255, 0.2);
+        border-radius: 6px;
+        padding: 15px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .trait-card.positivo {
+        border-left: 3px solid #64ff8d;
+    }
+    
+    .trait-card.negativo {
+        border-left: 3px solid #ff6464;
+    }
+    
+    .trait-name {
+        color: #fff;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+    
+    .trait-description {
+        font-size: 14px;
+        line-height: 1.4;
+    }
         
         /* Responsive */
         @media (max-width: 1100px) {
@@ -486,6 +578,11 @@
                     <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(100, 196, 255, 0.2); border-radius: 6px; padding: 20px;">
                         <p>$DESCRIZIONE_FISICA$</p>
                     </div>
+                    <div style="margin-top: 30px;">
+                        <h3 style="color: #64c4ff;">Descrizione Caratteriale</h3>
+                            <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(100, 196, 255, 0.2); border-radius: 6px; padding: 20px;">
+                                <p>$DESCRIZIONE_CARATTERE$</p>
+                            </div>
                 </div>
             </div>
             
@@ -499,43 +596,43 @@
                     <p>$STORIA$</p>
                 </div>
                 
-                <h3 style="color: #64c4ff;">Eventi Significativi</h3>
-                <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(100, 196, 255, 0.2); border-radius: 6px; padding: 20px;">
-                    <p>$EVENTI$</p>
-                </div>
             </div>
             
             <!-- TRATTI -->
-            <div id="tratti" class="tab-content">
-                <div class="close-btn"><i class="fas fa-times"></i></div>
-                <h2 class="section-title"><i class="fas fa-star"></i> Tratti Caratteriali</h2>
-                
-                <div class="content-grid">
-                    <div>
-                        <div style="color: #64c4ff; text-transform: uppercase; margin-bottom: 10px; font-weight: 600;">Personalità</div>
-                        <p>$PERSONALITA$</p>
-                    </div>
-                    <div>
-                        <div style="color: #64c4ff; text-transform: uppercase; margin-bottom: 10px; font-weight: 600;">Obiettivi</div>
-                        <p>$OBIETTIVI$</p>
-                    </div>
-                    <div>
-                        <div style="color: #64c4ff; text-transform: uppercase; margin-bottom: 10px; font-weight: 600;">Paure</div>
-                        <p>$PAURE$</p>
-                    </div>
-                    <div>
-                        <div style="color: #64c4ff; text-transform: uppercase; margin-bottom: 10px; font-weight: 600;">Motivazioni</div>
-                        <p>$MOTIVAZIONI$</p>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 30px;">
-                    <h3 style="color: #64c4ff;">Citazioni</h3>
-                    <div style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid rgba(100, 196, 255, 0.5); padding: 20px; font-style: italic;">
-                        "$CITAZIONE$"
-                    </div>
-                </div>
+<div id="tratti" class="tab-content">
+    <div class="close-btn"><i class="fas fa-times"></i></div>
+    <h2 class="section-title"><i class="fas fa-star"></i> Tratti</h2>
+    
+    <!-- Indicatore di sezione admin-only -->
+    <div class="admin-note">
+        <i class="fas fa-lock"></i> Questa sezione è modificabile solo dagli amministratori
+    </div>
+    
+    <!-- Tabs per categorie di tratti -->
+    <div class="traits-tabs">
+        <button class="trait-tab-btn active" data-trait-type="positivi">Tratti Positivi</button>
+        <button class="trait-tab-btn" data-trait-type="negativi">Tratti Negativi</button>
+    </div>
+    
+    <!-- Contenitore dei tratti -->
+    <div class="traits-container">
+        <!-- Tratti Positivi -->
+        <div class="trait-category active" id="positivi-traits">
+            <div class="traits-grid" id="positivi-traits-grid">
+                <!-- I tratti positivi verranno generati dinamicamente qui -->
+                $TRATTI_POSITIVI$
             </div>
+        </div>
+        
+        <!-- Tratti Negativi -->
+        <div class="trait-category" id="negativi-traits">
+            <div class="traits-grid" id="negativi-traits-grid">
+                <!-- I tratti negativi verranno generati dinamicamente qui -->
+                $TRATTI_NEGATIVI$
+            </div>
+        </div>
+    </div>
+</div>
             
             <!-- ABILITÀ -->
             <div id="abilita" class="tab-content">
@@ -631,53 +728,83 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navItems = document.querySelectorAll('.nav-item');
-            const tabContents = document.querySelectorAll('.tab-content');
-            const homeContent = document.getElementById('home-content');
-            const closeBtns = document.querySelectorAll('.close-btn');
-            
-            // Gestione click su item della navbar
-            navItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Rimuovi la classe active da tutti gli item e contenuti
-                    navItems.forEach(navItem => navItem.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    
-                    // Aggiungi la classe active all'item cliccato
-                    this.classList.add('active');
-                    
-                    // Mostra il contenuto corrispondente
-                    const tabId = this.getAttribute('data-tab');
-                    
-                    if (tabId === 'home') {
-                        // Mostra la scheda principale
-                        homeContent.style.display = 'block';
-                    } else {
-                        // Mostra la tab selezionata e nascondi la scheda principale
-                        document.getElementById(tabId).classList.add('active');
-                        homeContent.style.display = 'none';
-                    }
-                });
-            });
-            
-            // Gestione click su pulsanti di chiusura
-            closeBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Nascondi tutti i contenuti tab
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    
+    document.addEventListener('DOMContentLoaded', function() {
+        const navItems = document.querySelectorAll('.nav-item');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const homeContent = document.getElementById('home-content');
+        const closeBtns = document.querySelectorAll('.close-btn');
+        
+        // Gestione click su item della navbar
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Rimuovi la classe active da tutti gli item e contenuti
+                navItems.forEach(navItem => navItem.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Aggiungi la classe active all'item cliccato
+                this.classList.add('active');
+                
+                // Mostra il contenuto corrispondente
+                const tabId = this.getAttribute('data-tab');
+                
+                if (tabId === 'home') {
                     // Mostra la scheda principale
                     homeContent.style.display = 'block';
-                    
-                    // Attiva il pulsante home nella navbar
-                    navItems.forEach(navItem => navItem.classList.remove('active'));
-                    document.querySelector('[data-tab="home"]').classList.add('active');
-                });
+                } else {
+                    // Mostra la tab selezionata e nascondi la scheda principale
+                    document.getElementById(tabId).classList.add('active');
+                    homeContent.style.display = 'none';
+                }
             });
         });
-    </script>
+        
+        // Gestione click su pulsanti di chiusura
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Nascondi tutti i contenuti tab
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Mostra la scheda principale
+                homeContent.style.display = 'block';
+                
+                // Attiva il pulsante home nella navbar
+                navItems.forEach(navItem => navItem.classList.remove('active'));
+                document.querySelector('[data-tab="home"]').classList.add('active');
+            });
+        });
+
+        // NUOVA FUNZIONE: Gestione delle tab dei tratti
+        function setupTraitTabs() {
+            const traitTabButtons = document.querySelectorAll('.trait-tab-btn');
+            const traitCategories = document.querySelectorAll('.trait-category');
+            
+            if (traitTabButtons.length > 0) {
+                traitTabButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Rimuovi la classe active da tutti i pulsanti e categorie di tratti
+                        traitTabButtons.forEach(btn => btn.classList.remove('active'));
+                        traitCategories.forEach(category => category.classList.remove('active'));
+                        
+                        // Aggiungi la classe active al pulsante cliccato
+                        this.classList.add('active');
+                        
+                        // Mostra la categoria corrispondente
+                        const traitType = this.getAttribute('data-trait-type');
+                        const targetCategory = document.getElementById(`${traitType}-traits`);
+                        if (targetCategory) {
+                            targetCategory.classList.add('active');
+                        }
+                    });
+                });
+            }
+        }
+        
+        // Esegui la funzione per le tab dei tratti
+        setupTraitTabs();
+    });
+</script>
+
 </body>
 </html>
