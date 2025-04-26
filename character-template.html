@@ -501,6 +501,43 @@ body {
     }
 }
 
+        /* Griglia per abilità */
+.abilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.ability-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(100, 196, 255, 0.2);
+    border-radius: 6px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ability-name {
+    color: #64c4ff;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(100, 196, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+.ability-description {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #e0f7ff;
+}
+
+/* Responsive per abilità */
+@media (max-width: 768px) {
+    .abilities-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* Responsive */
 @media (max-width: 1100px) {
@@ -747,37 +784,24 @@ body {
             </div>
             
             <!-- ABILITÀ -->
-            <div id="abilita" class="tab-content">
-                <div class="close-btn"><i class="fas fa-times"></i></div>
-                <h2 class="section-title"><i class="fas fa-bolt"></i> Abilità e Competenze</h2>
-                
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-name">Forza</div>
-                        <div class="stat-value">$FORZA$</div>
-                    </div>
-                    
-                    <div class="stat-box">
-                        <div class="stat-name">Agilità</div>
-                        <div class="stat-value">$AGILITA$</div>
-                    </div>
-                    
-                    <div class="stat-box">
-                        <div class="stat-name">Intelletto</div>
-                        <div class="stat-value">$INTELLETTO$</div>
-                    </div>
-                </div>
-                
-                <h3 style="color: #64c4ff;">Competenze Tecniche</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 30px;">
-                    $COMPETENZE$
-                </div>
-                
-                <h3 style="color: #64c4ff;">Abilità Speciali</h3>
-                <div style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #64c4ff; padding: 15px; margin-top: 10px;">
-                    <strong style="color: #fff;">$NOME_ABILITA_SPECIALE$:</strong> $DESCRIZIONE_ABILITA_SPECIALE$
-                </div>
-            </div>
+<div id="abilita" class="tab-content">
+    <div class="close-btn"><i class="fas fa-times"></i></div>
+    <h2 class="section-title"><i class="fas fa-bolt"></i> Abilità e Competenze</h2>
+    
+    <!-- Nota informativa in alto -->
+    <div class="info-note" style="margin-bottom: 30px;">
+        <i class="fas fa-info-circle"></i>
+        <div>
+            Per richiedere l'acquisto di nuove abilità, utilizza il sistema di ticket nel canale <strong>#SUPPORTO</strong> su Discord.
+        </div>
+    </div>
+    
+    <!-- Abilità a card -->
+    <h3 style="color: #64c4ff;">Abilità</h3>
+    <div class="abilities-grid">
+        $ABILITA$
+    </div>
+</div>
             
             <!-- INVENTARIO -->
             <div id="inventario" class="tab-content">
@@ -838,7 +862,7 @@ body {
     <div class="info-note">
         <i class="fas fa-info-circle"></i>
         <div>
-            Per richiedere l'acquisto di nuove abilità, utilizza il sistema di ticket nel canale <strong>#richieste-personaggio</strong> su Discord.
+            Per richiedere l'acquisto di nuove abilità, utilizza il sistema di ticket nel canale <strong>#SUPPORTO</strong> su Discord.
         </div>
     </div>
 </div>
