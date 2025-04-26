@@ -6,21 +6,35 @@
     <title>Scheda Personaggio Sci-Fi</title>
     <style>
         /* Stili globali */
+/* Stili globali */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Rajdhani', 'Arial', sans-serif;
-    background: linear-gradient(135deg, #1c3855, #0a1a2e);
+    background: linear-gradient(135deg, #050c1d, #0a1a2e);
     color: #e0f7ff;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+    /* Nebulosa spaziale con stelle */
+    background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     position: relative;
+}
+
+/* Overlay scuro per migliorare la leggibilità */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 12, 29, 0.7);
+    z-index: -1;
 }
 
 /* Layout principale */
@@ -114,30 +128,90 @@ body {
 .character-card {
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.1);
+    /* Sfondo più scuro */
+    background: rgba(10, 20, 35, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 0 10px 10px 0;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    /* Ombra più pronunciata per un effetto "fluttuante" */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(100, 196, 255, 0.2);
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+/* Aggiunta di un sottile bordo luminoso */
+.character-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0 10px 10px 0;
+    border: 1px solid rgba(100, 196, 255, 0.2);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Effetto linee di scansione per un look più tech */
+.character-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 2px,
+        rgba(100, 196, 255, 0.03) 3px,
+        rgba(100, 196, 255, 0.03) 3px
+    );
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Header della scheda con info e immagine */
 .card-header {
     display: flex;
     height: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 /* Sezione info personaggio */
 .info-section {
     flex: 1;
     padding: 40px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    /* Sfondo leggermente più scuro con effetto gradiente */
+    background: linear-gradient(135deg, rgba(10, 20, 35, 0.9), rgba(5, 12, 29, 0.8));
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+}
+
+/* Indicatore pulsante in stile sci-fi */
+.info-section::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(100, 196, 255, 0.6);
+    border-radius: 50%;
+    top: 20px;
+    left: 20px;
+    box-shadow: 0 0 10px rgba(100, 196, 255, 0.8);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
 }
 
 /* Sezione immagine */
@@ -147,6 +221,20 @@ body {
     background-position: center;
     position: relative;
     overflow: hidden;
+    border-left: 1px solid rgba(100, 196, 255, 0.2);
+}
+
+.image-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(10, 20, 35, 0.2), 
+        transparent);
+    z-index: 1;
 }
 
 .image-section img {
@@ -158,7 +246,9 @@ body {
 }
 
 /* Stile nome e cognome */
-.character-name {
+.character-name, .character-surname {
+    position: relative;
+    z-index: 2;
     font-family: 'Orbitron', 'Rajdhani', sans-serif;
     text-transform: uppercase;
     color: #64c4ff;
@@ -166,26 +256,34 @@ body {
     line-height: 1;
     margin: 0;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(100, 196, 255, 0.5);
+    text-shadow: 0 0 10px rgba(100, 196, 255, 0.5), 0 0 20px rgba(100, 196, 255, 0.2);
 }
 
 .character-surname {
-    font-family: 'Orbitron', 'Rajdhani', sans-serif;
-    text-transform: uppercase;
-    color: #64c4ff;
-    font-size: 4rem;
-    line-height: 1;
     margin: 0 0 20px 0;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(100, 196, 255, 0.5);
 }
 
-/* Linea separatrice */
+/* Separatore più futuristico */
 .separator {
     height: 2px;
-    background: linear-gradient(to right, rgba(100, 196, 255, 0.2), rgba(100, 196, 255, 0.8), rgba(100, 196, 255, 0.2));
+    background: linear-gradient(to right, 
+        rgba(100, 196, 255, 0.05), 
+        rgba(100, 196, 255, 0.8), 
+        rgba(100, 196, 255, 0.05));
     margin: 30px 0;
     width: 100%;
+    position: relative;
+}
+
+.separator::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 30%;
+    right: 30%;
+    height: 4px;
+    background: rgba(100, 196, 255, 0.8);
+    filter: blur(3px);
 }
 
 /* Contenuto delle tab */
@@ -381,7 +479,7 @@ body {
     line-height: 1.4;
 }
 
-        /* Stili per la sezione XP */
+/* Stili per la sezione XP */
 .xp-summary {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -448,7 +546,7 @@ body {
     }
 }
 
-        /* Griglia per abilità */
+/* Griglia per abilità */
 .abilities-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -597,6 +695,30 @@ body {
     }
 }
 
+/* Elementi decorativi angolari per un look da HUD sci-fi */
+.character-card::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-top: 2px solid rgba(100, 196, 255, 0.6);
+    border-left: 2px solid rgba(100, 196, 255, 0.6);
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+}
+
+.character-card::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-bottom: 2px solid rgba(100, 196, 255, 0.6);
+    border-right: 2px solid rgba(100, 196, 255, 0.6);
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+}
 
 /* Responsive */
 @media (max-width: 1100px) {
@@ -657,7 +779,6 @@ body {
         border-radius: 0 0 10px 10px;
     }
 }
-
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
