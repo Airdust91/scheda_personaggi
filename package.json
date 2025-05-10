@@ -1,0 +1,16 @@
+{
+  "name": "scheda_personaggi",
+  "version": "1.0.0",
+  "description": "Un progetto per generare schede personaggio",
+  "main": "index.js",
+  "scripts": {
+    "start": "n8n start",
+    "build": "npm run build"
+  },
+  "dependencies": {
+    "n8n": "^0.142.0",           // Dipendenza principale per n8n
+    "airtable": "^0.11.0",       // Dipendenza per Airtable
+    "octokit": "^3.1.0"          // Dipendenza per GitHub API
+  },
+  "devDependencies": {}
+}
