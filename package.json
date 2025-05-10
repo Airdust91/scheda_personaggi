@@ -4,8 +4,7 @@
   "description": "Un progetto per generare schede personaggio",
   "main": "index.js",
   "scripts": {
-    "start": "n8n start",
-    "build": "npm run build"
+    "start": "n8n start"
   },
   "dependencies": {
     "n8n": "^0.142.0",
