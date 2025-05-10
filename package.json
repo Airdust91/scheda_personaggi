@@ -8,9 +8,9 @@
     "build": "npm run build"
   },
   "dependencies": {
-    "n8n": "^0.142.0",           // Dipendenza principale per n8n
-    "airtable": "^0.11.0",       // Dipendenza per Airtable
-    "octokit": "^3.1.0"          // Dipendenza per GitHub API
+    "n8n": "^0.142.0",
+    "airtable": "^0.11.0",
+    "octokit": "^3.1.0"
   },
   "devDependencies": {}
 }
